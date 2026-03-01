@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miguel Coias — Actor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a08;
+    --off-white: #f5f0e8;
+    --cream: #ede8dc;
+    --gold: #b8963e;
+    --gold-light: #d4af6a;
+    --text-muted: #7a7060;
+    --border: rgba(184,150,62,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.95) 0%, transparent 100%);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 3rem 5rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 60% 40%, rgba(184,150,62,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(184,150,62,0.05) 0%, transparent 50%),
+      linear-gradient(170deg, #0a0a08 0%, #141410 50%, #0a0a08 100%);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-lines::before, .hero-lines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--border), transparent);
+  }
+
+  .hero-lines::before { left: 30%; }
+  .hero-lines::after { right: 30%; }
+
+  .hero-image-container {
+    position: absolute;
+    right: 8%;
+    top: 0;
+    bottom: 0;
+    width: 42%;
+    overflow: hidden;
+  }
+
+  .hero-image-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--black) 0%, transparent 30%, transparent 70%, var(--black) 100%),
+                linear-gradient(to bottom, var(--black) 0%, transparent 15%, transparent 80%, var(--black) 100%);
+    z-index: 1;
+  }
+
+  .hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(20%) contrast(1.1);
+    opacity: 0.6;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 55%;
+  }
+
+  .hero-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(4rem, 7vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-tagline {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    max-width: 380px;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.4s ease;
+  }
+
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary:hover { color: var(--black); }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-ghost {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-ghost:hover { opacity: 1; }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    writing-mode: vertical-rl;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .scroll-indicator::after {
+    content: '';
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ── QUOTE SECTION ── */
+  .quote-section {
+    padding: 7rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .quote-section::before {
+    content: '"';
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12rem;
+    color: var(--gold);
+    opacity: 0.07;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--cream);
+    position: relative;
+    z-index: 1;
+  }
+
+  blockquote cite {
+    display: block;
+    margin-top: 2rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ── SECTION STYLES ── */
+  section {
+    padding: 5rem 3rem;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── BIO SECTION ── */
+  .bio-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .bio-sticky {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .bio-portrait {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(15%);
+  }
+
+  .bio-portrait-frame {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bio-portrait-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 60%;
+    height: 60%;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    pointer-events: none;
+  }
+
+  .bio-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.8);
+    margin-bottom: 1.5rem;
+  }
+
+  .bio-text p:first-of-type {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: var(--off-white);
+  }
+
+  /* ── REPRESENTATION ── */
+  .rep-box {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .rep-box::before {
+    content: 'Representation';
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    background: var(--black);
+    padding: 0 0.5rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .rep-box p {
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    color: var(--off-white) !important;
+    margin: 0 !important;
+  }
+
+  .rep-box a {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+
+  /* ── PROFILES BAR ── */
+  .profiles-bar {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 3rem 0;
+    overflow-x: auto;
+  }
+
+  .profile-link {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-right: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .profile-link:last-child { border-right: none; }
+  .profile-link:hover { color: var(--gold); background: rgba(184,150,62,0.05); }
+
+  /* ── REEL SECTION ── */
+  .reel-section {
+    background: #060604;
+    padding: 5rem 3rem;
+  }
+
+  .reel-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .reel-embed {
+    margin-top: 3rem;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .reel-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── RESUME ── */
+  .resume-section {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .resume-category {
+    margin-bottom: 3rem;
+  }
+
+  .resume-category h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .resume-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 0.5rem 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(184,150,62,0.08);
+    font-size: 0.82rem;
+    transition: background 0.2s;
+  }
+
+  .resume-row:hover { background: rgba(184,150,62,0.04); }
+
+  .resume-row .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--off-white);
+  }
+
+  .resume-row .role { color: rgba(245,240,232,0.65); }
+  .resume-row .venue { color: var(--gold); font-size: 0.75rem; text-align: right; }
+
+  .training-block {
+    margin-bottom: 1.5rem;
+  }
+
+  .training-block strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--off-white);
+    margin-bottom: 0.4rem;
+  }
+
+  .training-block p {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: all 0.3s;
+  }
+
+  .tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── GALLERY ── */
+  .gallery-section {
+    padding: 5rem 3rem;
+    background: #0d0d0a;
+  }
+
+  .gallery-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 0.75rem;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    position: relative;
+    background: #1a1a16;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: transform 0.6s ease, filter 0.4s;
+    display: block;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.04);
+    filter: grayscale(0%);
+  }
+
+  .gallery-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(2) { grid-column: 6 / 10; grid-row: 1; aspect-ratio: 2/3; }
+  .gallery-item:nth-child(3) { grid-column: 10 / 13; grid-row: 1; aspect-ratio: 2/3; }
+  .gallery-item:nth-child(4) { grid-column: 1 / 4; grid-row: 2; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(5) { grid-column: 4 / 9; grid-row: 2; aspect-ratio: 16/9; }
+  .gallery-item:nth-child(6) { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 3/4; }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 4rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .social-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .social-links a:hover { color: var(--gold-light); }
+
+  .footer-copy {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    opacity: 0.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.animate {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .fade-in.animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 0 1.5rem 4rem; }
+    .hero-image-container { width: 55%; }
+    .hero-content { max-width: 65%; }
+    section { padding: 4rem 1.5rem; }
+    .bio-section { grid-template-columns: 1fr; gap: 3rem; }
+    .bio-sticky { position: static; }
+    .resume-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:nth-child(n) { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; }
+    .footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Miguel Coias</a>
+  <ul class="nav-links">
+    <li><a href="#bio">About</a></li>
+    <li><a href="#reel">Reel</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#7714181903161403371a1e1002121b14181e16045914181a">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="hero-image-container">
+    <img src="images/MiguelCoias_1.jpg" alt="Miguel Coias">
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-label">Actor · Lisbon–New York</div>
+    <h1>Miguel<br><em>Coias</em></h1>
+    <p class="hero-tagline">Film · Television · Stage · Voice<br>RADA · AADA · New York Conservatory</p>
+    <div class="hero-cta">
+      <a href="#reel" class="btn-primary"><span>Watch Reel</span></a>
+      <a href="#resume" class="btn-ghost">View Resume →</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">Scroll</div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section fade-in">
+  <blockquote>
+    "To be great, be whole; Exclude nothing, exaggerate nothing that is not you.
+    Be whole in everything. Put all you are Into the smallest thing you do."
+    <cite>— Fernando Pessoa</cite>
+  </blockquote>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROFILE LINKS -->
+<div class="profiles-bar">
+  <a href="https://www.imdb.com/name/nm3893915/" class="profile-link" target="_blank">IMDb</a>
+  <a href="https://resumes.actorsaccess.com/miguelcoias" class="profile-link" target="_blank">Actors Access</a>
+  <a href="https://app.castingnetworks.com/talent/public-profile/d7ecf074-e35a-11eb-b9cb-afdb159a832c" class="profile-link" target="_blank">Casting Networks</a>
+  <a href="https://www.spotlight.com/4938-8941-5440" class="profile-link" target="_blank">Spotlight</a>
+  <a href="/cdn-cgi/l/email-protection#c1a0a6a4afb581aca8a6b4a4ada2aea8a0b2efa2aeac" class="profile-link">Contact Agent</a>
+</div>
+
+<!-- BIO -->
+<section id="bio">
+  <div class="bio-section fade-in">
+    <div class="bio-sticky">
+      <div class="bio-portrait-frame">
+        <img class="bio-portrait" src="images/MiguelCoias_2.jpg" alt="Miguel Coias">
+      </div>
+      <div class="rep-box">
+        <p>
+          Represented by <a href="https://pro.imdb.com/company/co0174595/" target="_blank">Maude Kaplan Management</a><br>
+          <a href="/cdn-cgi/l/email-protection#ddb4b3bbb29db0bca8b9b8b6bcadb1bcb3f3beb2b0"><span class="__cf_email__" data-cfemail="147d7a727b5479756170717f756478757a3a777b79">[email&#160;protected]</span></a> &nbsp;·&nbsp; <a href="tel:2128734303">(212) 873-4303</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="bio-text">
+      <div class="section-label">About</div>
+      <h2>The Actor</h2>
+
+      <p>Miguel Coias is a New York City-based actor working in the US and internationally in film, television, and voice. Recent credits include <em>The White House Plumbers</em> on HBO.</p>
+
+      <p>Originally from Lisbon, Portugal, his young life was shaped by the sea, mountains, sports, and an immersion in world cinema. It was through American films and classic movies that he perfected his English and found his path to acting.</p>
+
+      <p>Miguel studied at the Royal Academy of Dramatic Arts in London and the American Academy of Dramatic Arts and New York Conservatory for Dramatic Arts in New York City. In addition to Portuguese and English, he speaks Spanish, French, and Italian.</p>
+
+      <p>His strength and versatility as an actor stem from a sincere desire to study human nature and an intuitive understanding of the psyches and movement languages that drive each character. His studies, travels, and projects have taken him to France, Spain, Morocco, Tunisia, Holland, Germany, New Orleans, and California in pursuit of this body of work.</p>
+
+      <p>Formed through an embodied process informed by his work with acting teacher Julia Carey — drawn dynamically from the people he's known on the streets of New York and the world — his characters carry the weight of lived experience.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REEL -->
+<div class="reel-section" id="reel">
+  <div class="reel-inner fade-in">
+    <div class="section-label">Showreel</div>
+    <h2>Watch the Reel</h2>
+    <a href="https://vimeo.com/579977963" target="_blank" class="reel-poster" id="reelPoster">
+      <div class="reel-embed" style="cursor:pointer; position:relative;">
+        <img id="reelThumb" src="" alt="Miguel Coias — Showreel" style="width:100%;height:100%;object-fit:cover;display:block;background:#111;">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);">
+          <div style="width:72px;height:72px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div style="position:absolute;bottom:1.2rem;left:1.5rem;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);">Watch on Vimeo</div>
+      </div>
+    </a>
+    <p style="margin-top:1rem; font-size:0.75rem; color: var(--text-muted); text-align:right;">
+      View full profile on <a href="https://vimeo.com/user3163083" style="color:var(--gold-light);" target="_blank">Vimeo →</a>
+    </p>
+    <script>
+      // Load Vimeo thumbnail via oEmbed API
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/579977963&width=1280')
+        .then(r => r.json())
+        .then(d => {
+          const img = document.getElementById('reelThumb');
+          if (img && d.thumbnail_url) img.src = d.thumbnail_url;
+        })
+        .catch(() => {
+          // fallback: just show play button on dark bg
+        });
+    </script>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="resume-section fade-in">
+    <div class="section-label">Credits &amp; Training</div>
+    <h2>Resume</h2>
+
+    <div class="resume-grid">
+      <!-- Stage -->
+      <div>
+        <div class="resume-category">
+          <h3>Stage</h3>
+          <div class="resume-row"><span class="title">Richard III</span><span class="role">Gloucester</span><span class="venue">RADA</span></div>
+          <div class="resume-row"><span class="title">Liz Estrada</span><span class="role">Bobby</span><span class="venue">45 Bleecker Theater</span></div>
+          <div class="resume-row"><span class="title">Underaddress</span><span class="role">Joe</span><span class="venue">The Collective Unconscious</span></div>
+          <div class="resume-row"><span class="title">The Seagull</span><span class="role">Trigorin / Dorn</span><span class="venue">Shapiro Hall</span></div>
+          <div class="resume-row"><span class="title">Shadow Box</span><span class="role">Mark</span><span class="venue">Lester Martin Theater</span></div>
+          <div class="resume-row"><span class="title">Middle of the Night</span><span class="role">Son in Law</span><span class="venue">Mary MacArthur Theater</span></div>
+          <div class="resume-row"><span class="title">Bury The Dead</span><span class="role">Morgan</span><span class="venue">Lester Martin Theater</span></div>
+        </div>
+
+        <div class="resume-category">
+          <h3>Training</h3>
+          <div class="training-block">
+            <strong>Royal Academy of Dramatic Arts</strong>
+            <p>Shakespeare Summer School · Acting, Movement, Voice, Stage Combat, Period Dance</p>
+          </div>
+          <div class="training-block">
+            <strong>School for Film and Television</strong>
+            <p>Julia Carey (Character Process · Camera Process) · John Tyrrell (Acting) · Voice, Improv, Scene Study</p>
+          </div>
+          <div class="training-block">
+            <strong>American Academy of Dramatic Arts</strong>
+            <p>Acting, Speech, Vocal Production, Williamson Technique, Dance, Singing</p>
+          </div>
+        </div>
+
+        <div class="resume-category">
+          <h3>Special Skills</h3>
+          <div class="skills-tags">
+            <span class="tag">Portuguese</span>
+            <span class="tag">English</span>
+            <span class="tag">Spanish</span>
+            <span class="tag">French</span>
+            <span class="tag">Italian</span>
+            <span class="tag">Stage Combat</span>
+            <span class="tag">Motorcycle</span>
+            <span class="tag">Horseback Riding</span>
+            <span class="tag">Basketball</span>
+            <span class="tag">Soccer</span>
+            <span class="tag">Yoga</span>
+            <span class="tag">Directing</span>
+            <span class="tag">Photography</span>
+            <span class="tag">Coding</span>
+            <span class="tag">Bartending</span>
+            <span class="tag">Singing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen -->
+      <div>
+        <div class="resume-category">
+          <h3>Screen</h3>
+          <div class="resume-row"><span class="title">The White House Plumbers</span><span class="role">Spanish Embassy Staffer</span><span class="venue">David Mandel</span></div>
+          <div class="resume-row"><span class="title">Blindsight</span><span class="role">Earle</span><span class="venue">Amy Guggenheim</span></div>
+          <div class="resume-row"><span class="title">The Harvester Generation</span><span class="role">Trader</span><span class="venue">Minos Papas</span></div>
+          <div class="resume-row"><span class="title">Henny</span><span class="role">Henny Martins</span><span class="venue">Mike Charalambous</span></div>
+          <div class="resume-row"><span class="title">The Politics of Conflict</span><span class="role">Xavier / Waiter</span><span class="venue">Minos Papas</span></div>
+          <div class="resume-row"><span class="title">Wrong Floor</span><span class="role">William</span><span class="venue">Benjamin Dawson</span></div>
+          <div class="resume-row"><span class="title">The Killers</span><span class="role">Ole</span><span class="venue">Niklas Hildien</span></div>
+          <div class="resume-row"><span class="title">Manhattan Misfits</span><span class="role">Godson</span><span class="venue">David Shapiro</span></div>
+          <div class="resume-row"><span class="title">The Other One</span><span class="role">Julian</span><span class="venue">Miguel Coias</span></div>
+          <div class="resume-row"><span class="title">Iceman</span><span class="role">Hitman</span><span class="venue">Ruben Mazzoleni</span></div>
+          <div class="resume-row"><span class="title">Ebony's Letter</span><span class="role">Stalker</span><span class="venue">Min Ukani</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<div class="gallery-section" id="gallery">
+  <div class="gallery-inner fade-in">
+    <div class="section-label">Headshots &amp; On Set</div>
+    <h2>Photography</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/MiguelCoias_1.jpg" alt="Miguel Coias">
+      </div>
+      <div class="gallery-item">
+        <img src="images/MiguelCoias_2.jpg" alt="Miguel Coias">
+      </div>
+      <div class="gallery-item">
+        <img src="images/MiguelCoias_3.jpg" alt="Miguel Coias">
+      </div>
+      <div class="gallery-item">
+        <img src="images/MiguelCoias_4.jpg" alt="Miguel Coias">
+      </div>
+      <div class="gallery-item">
+        <img src="images/MiguelCoias_5.jpg" alt="Miguel Coias">
+      </div>
+      <div class="gallery-item">
+        <img src="images/MiguelCoias_6.jpg" alt="Miguel Coias">
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-muted); text-align:right;">
+      Photography by <a href="https://www.toddestrinphotography.com/" style="color:var(--gold-light);" target="_blank">Todd Estrin →</a>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-name">Miguel Coias</div>
+  <ul class="social-links">
+    <li><a href="https://www.instagram.com/ruimiguelcoias/" target="_blank">Instagram</a></li>
+    <li><a href="https://twitter.com/miguelcoias" target="_blank">Twitter</a></li>
+    <li><a href="https://vimeo.com/user3163083" target="_blank">Vimeo</a></li>
+    <li><a href="https://www.imdb.com/name/nm3893915/" target="_blank">IMDb</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Miguel Coias</span>
+</footer>
+
+<script>
+  // Add animate class via JS so content is visible if JS fails
+  const fadeEls = document.querySelectorAll('.fade-in');
+  fadeEls.forEach(el => el.classList.add('animate'));
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+  } else {
+    fadeEls.forEach(el => el.classList.add('visible'));
+  }
+
+  setTimeout(() => {
+    fadeEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 100);
+</script>
+</body>
+</html>
