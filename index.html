@@ -706,7 +706,7 @@
     <li><a href="#reel">Reel</a></li>
     <li><a href="#resume">Resume</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#5835393f3f313d183533352c39343d362c763b3735">Contact</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -749,7 +749,7 @@
   <a href="https://resumes.actorsaccess.com/miguelcoias" class="profile-link" target="_blank">Actors Access</a>
   <a href="https://app.castingnetworks.com/talent/public-profile/d7ecf074-e35a-11eb-b9cb-afdb159a832c" class="profile-link" target="_blank">Casting Networks</a>
   <a href="https://www.spotlight.com/4938-8941-5440" class="profile-link" target="_blank">Spotlight</a>
-  <a href="/cdn-cgi/l/email-protection#0c616d6b6b65694c616761786d60696278226f6361" class="profile-link">Contact Agent</a>
+  <a href="#contact" class="profile-link">Contact Agent</a>
 </div>
 
 <!-- BIO -->
@@ -762,7 +762,7 @@
       <div class="rep-box">
         <p>
           Represented by <a href="https://pro.imdb.com/company/co0174595/" target="_blank">Maude Kaplan Management</a><br>
-          <a href="/cdn-cgi/l/email-protection#5934383e3e303c193432342d38353c372d773a3634"><span class="__cf_email__" data-cfemail="6805090f0f010d280503051c09040d061c460b0705">[email&#160;protected]</span></a> &nbsp;·&nbsp; <a href="tel:2128734303">(212) 873-4303</a>
+          <a href="mailto:maggie@mkmtalent.com">maggie@mkmtalent.com</a> &nbsp;·&nbsp; <a href="tel:2128734303">(212) 873-4303</a>
         </p>
       </div>
     </div>
@@ -914,6 +914,64 @@
     </p>
   </div>
 </div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding: 5rem 3rem; max-width: 700px; margin: 0 auto;">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact</h2>
+  <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2.5rem; line-height: 1.8;">
+    For representation enquiries, please contact 
+    <strong style="color: var(--off-white);">Maude Kaplan Management</strong> 
+    at <strong style="color: var(--off-white);">(212) 873-4303</strong>
+  </p>
+
+  <form action="https://formspree.io/f/xnjbydjp" method="POST" id="contact-form">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+      <div>
+        <label style="display: block; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Name</label>
+        <input type="text" name="name" required style="width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 0.85rem 1rem; color: var(--off-white); font-family: 'Raleway', sans-serif; font-size: 0.85rem; outline: none; transition: border 0.3s;">
+      </div>
+      <div>
+        <label style="display: block; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Email</label>
+        <input type="email" name="email" required style="width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 0.85rem 1rem; color: var(--off-white); font-family: 'Raleway', sans-serif; font-size: 0.85rem; outline: none; transition: border 0.3s;">
+      </div>
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <label style="display: block; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Subject</label>
+      <input type="text" name="subject" style="width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 0.85rem 1rem; color: var(--off-white); font-family: 'Raleway', sans-serif; font-size: 0.85rem; outline: none; transition: border 0.3s;">
+    </div>
+    <div style="margin-bottom: 1.5rem;">
+      <label style="display: block; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Message</label>
+      <textarea name="message" rows="5" required style="width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 0.85rem 1rem; color: var(--off-white); font-family: 'Raleway', sans-serif; font-size: 0.85rem; outline: none; resize: vertical; transition: border 0.3s;"></textarea>
+    </div>
+    <button type="submit" class="btn-primary" style="cursor: pointer; border: none; background: transparent; font-family: 'Raleway', sans-serif;">
+      <span>Send Message</span>
+    </button>
+    <p id="form-status" style="margin-top: 1rem; font-size: 0.8rem; color: var(--gold); display: none;">Message sent! Thank you.</p>
+  </form>
+</section>
+
+<div class="divider"></div>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.reset();
+        status.style.display = 'block';
+      }
+    });
+  }
+</script>
 
 <!-- FOOTER -->
 <footer class="footer">
