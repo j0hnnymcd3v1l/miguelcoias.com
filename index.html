@@ -100,6 +100,7 @@
       linear-gradient(170deg, #0a0a08 0%, #141410 50%, #0a0a08 100%);
   }
 
+  /* Decorative vertical lines */
   .hero-lines {
     position: absolute;
     inset: 0;
@@ -537,6 +538,7 @@
   .resume-row .role { color: rgba(245,240,232,0.65); }
   .resume-row .venue { color: var(--gold); font-size: 0.75rem; text-align: right; }
 
+  /* training */
   .training-block {
     margin-bottom: 1.5rem;
   }
@@ -555,6 +557,7 @@
     color: var(--text-muted);
   }
 
+  /* skills tags */
   .skills-tags {
     display: flex;
     flex-wrap: wrap;
@@ -596,7 +599,6 @@
   .gallery-item {
     overflow: hidden;
     position: relative;
-    background: #1a1a16;
   }
 
   .gallery-item img {
@@ -620,15 +622,14 @@
   .gallery-item:nth-child(5) { grid-column: 4 / 9; grid-row: 2; aspect-ratio: 16/9; }
   .gallery-item:nth-child(6) { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 3/4; }
 
-  /* ── FOOTER ── */
+  /* ── SOCIAL ── */
   .footer {
     padding: 4rem 3rem;
     border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    flex-wrap: gap;
   }
 
   .footer-name {
@@ -672,17 +673,12 @@
 
   /* ── ANIMATIONS ── */
   .fade-in {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
-  .fade-in.animate {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .fade-in.animate.visible {
+  .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -698,7 +694,9 @@
     .bio-section { grid-template-columns: 1fr; gap: 3rem; }
     .bio-sticky { position: static; }
     .resume-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
     .gallery-item:nth-child(n) { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; }
     .footer { flex-direction: column; gap: 1.5rem; text-align: center; }
   }
@@ -714,7 +712,7 @@
     <li><a href="#reel">Reel</a></li>
     <li><a href="#resume">Resume</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#7714181903161403371a1e1002121b14181e16045914181a">Contact</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#472a2620202e22072a2c2a33262b2229336924282a">Contact</a></li>
   </ul>
 </nav>
 
@@ -757,7 +755,7 @@
   <a href="https://resumes.actorsaccess.com/miguelcoias" class="profile-link" target="_blank">Actors Access</a>
   <a href="https://app.castingnetworks.com/talent/public-profile/d7ecf074-e35a-11eb-b9cb-afdb159a832c" class="profile-link" target="_blank">Casting Networks</a>
   <a href="https://www.spotlight.com/4938-8941-5440" class="profile-link" target="_blank">Spotlight</a>
-  <a href="/cdn-cgi/l/email-protection#c1a0a6a4afb581aca8a6b4a4ada2aea8a0b2efa2aeac" class="profile-link">Contact Agent</a>
+  <a href="/cdn-cgi/l/email-protection#cea3afa9a9a7ab8ea3a5a3baafa2aba0bae0ada1a3" class="profile-link">Contact Agent</a>
 </div>
 
 <!-- BIO -->
@@ -770,7 +768,7 @@
       <div class="rep-box">
         <p>
           Represented by <a href="https://pro.imdb.com/company/co0174595/" target="_blank">Maude Kaplan Management</a><br>
-          <a href="/cdn-cgi/l/email-protection#ddb4b3bbb29db0bca8b9b8b6bcadb1bcb3f3beb2b0"><span class="__cf_email__" data-cfemail="147d7a727b5479756170717f756478757a3a777b79">[email&#160;protected]</span></a> &nbsp;·&nbsp; <a href="tel:2128734303">(212) 873-4303</a>
+          <a href="/cdn-cgi/l/email-protection#d5b8b4b2b2bcb095b8beb8a1b4b9b0bba1fbb6bab8"><span class="__cf_email__" data-cfemail="3855595f5f515d785553554c59545d564c165b5755">[email&#160;protected]</span></a> &nbsp;·&nbsp; <a href="tel:2128734303">(212) 873-4303</a>
         </p>
       </div>
     </div>
@@ -799,32 +797,12 @@
   <div class="reel-inner fade-in">
     <div class="section-label">Showreel</div>
     <h2>Watch the Reel</h2>
-    <a href="https://vimeo.com/579977963" target="_blank" class="reel-poster" id="reelPoster">
-      <div class="reel-embed" style="cursor:pointer; position:relative;">
-        <img id="reelThumb" src="" alt="Miguel Coias — Showreel" style="width:100%;height:100%;object-fit:cover;display:block;background:#111;">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);">
-          <div style="width:72px;height:72px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <div style="position:absolute;bottom:1.2rem;left:1.5rem;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);">Watch on Vimeo</div>
-      </div>
-    </a>
+    <div class="reel-embed">
+      <iframe src="https://player.vimeo.com/video/579977963?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Miguel Coias Reel"></iframe>
+    </div>
     <p style="margin-top:1rem; font-size:0.75rem; color: var(--text-muted); text-align:right;">
       View full profile on <a href="https://vimeo.com/user3163083" style="color:var(--gold-light);" target="_blank">Vimeo →</a>
     </p>
-    <script>
-      // Load Vimeo thumbnail via oEmbed API
-      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/579977963&width=1280')
-        .then(r => r.json())
-        .then(d => {
-          const img = document.getElementById('reelThumb');
-          if (img && d.thumbnail_url) img.src = d.thumbnail_url;
-        })
-        .catch(() => {
-          // fallback: just show play button on dark bg
-        });
-    </script>
   </div>
 </div>
 
@@ -955,28 +933,5 @@
   <span class="footer-copy">© 2026 Miguel Coias</span>
 </footer>
 
-<script>
-  // Add animate class via JS so content is visible if JS fails
-  const fadeEls = document.querySelectorAll('.fade-in');
-  fadeEls.forEach(el => el.classList.add('animate'));
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
-    fadeEls.forEach(el => observer.observe(el));
-  } else {
-    fadeEls.forEach(el => el.classList.add('visible'));
-  }
-
-  setTimeout(() => {
-    fadeEls.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) el.classList.add('visible');
-    });
-  }, 100);
-</script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Fade-
