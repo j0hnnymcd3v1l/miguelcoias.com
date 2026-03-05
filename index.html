@@ -598,12 +598,16 @@
     filter: grayscale(0%);
   }
 
-  .gallery-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1; aspect-ratio: 3/4; }
-  .gallery-item:nth-child(2) { grid-column: 6 / 10; grid-row: 1; aspect-ratio: 2/3; }
-  .gallery-item:nth-child(3) { grid-column: 10 / 13; grid-row: 1; aspect-ratio: 2/3; }
-  .gallery-item:nth-child(4) { grid-column: 1 / 4; grid-row: 2; aspect-ratio: 3/4; }
-  .gallery-item:nth-child(5) { grid-column: 4 / 9; grid-row: 2; aspect-ratio: 16/9; }
-  .gallery-item:nth-child(6) { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(1) { grid-column: 1 / 5; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(2) { grid-column: 5 / 9; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(3) { grid-column: 9 / 13; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(4) { grid-column: 1 / 4; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(5) { grid-column: 4 / 8; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(6) { grid-column: 8 / 10; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(7) { grid-column: 10 / 13; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(8) { grid-column: 1 / 5; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(9) { grid-column: 5 / 9; aspect-ratio: 3/4; }
+  .gallery-item:nth-child(10) { grid-column: 9 / 13; aspect-ratio: 3/4; }
 
   /* ── SOCIAL ── */
   .footer {
@@ -689,6 +693,7 @@
     <li><a href="#reel">Reel</a></li>
     <li><a href="#resume">Resume</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#street">Photography</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -703,7 +708,7 @@
   </div>
 
   <div class="hero-content">
-    <div class="hero-label">Actor · Lisbon–New York</div>
+    <div class="hero-label">Actor · Photographer</div>
     <h1>Miguel<br><em>Coias</em></h1>
     <p class="hero-tagline">Film · Television · Stage · Voice<br>RADA · AADA · New York Conservatory</p>
     <div class="hero-cta">
@@ -891,12 +896,55 @@
       <div class="gallery-item">
         <img src="images/MiguelCoias_6.jpg" alt="Miguel Coias">
       </div>
+      <div class="gallery-item">
+        <img src="images/Hv1.jpg" alt="The Harvester Generation">
+      </div>
+      <div class="gallery-item">
+        <img src="images/Hv2.jpg" alt="The Harvester Generation">
+      </div>
+      <div class="gallery-item">
+        <img src="images/Hv3.jpg" alt="The Harvester Generation">
+      </div>
+      <div class="gallery-item">
+        <img src="images/Hv4.jpg" alt="The Harvester Generation">
+      </div>
     </div>
     <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-muted); text-align:right;">
       Photography by <a href="https://www.toddestrinphotography.com/" style="color:var(--gold-light);" target="_blank">Todd Estrin →</a>
     </p>
   </div>
 </div>
+
+<!-- STREET PHOTOGRAPHY -->
+<div class="gallery-section" id="street" style="background: #080806;">
+  <div class="gallery-inner">
+    <div class="section-label">Behind The Lens</div>
+    <h2>Street Photography</h2>
+    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2.5rem; line-height: 1.8; max-width: 500px;">
+      A parallel world — Miguel's eye on the streets of New York and beyond.
+      <a href="https://www.instagram.com/imphotomatic/" target="_blank" style="color: var(--gold-light); margin-left: 0.5rem;">Follow on Instagram →</a>
+    </p>
+    <div class="gallery-grid" id="street-gallery">
+      <div class="gallery-item" style="grid-column: 1 / 5; aspect-ratio: 2/3;"><img src="images/street1.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 5 / 9; aspect-ratio: 2/3;"><img src="images/street2.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 9 / 13; aspect-ratio: 2/3;"><img src="images/street3.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 1 / 4; aspect-ratio: 2/3;"><img src="images/street4.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 4 / 8; aspect-ratio: 2/3;"><img src="images/street5.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 8 / 13; aspect-ratio: 2/3;"><img src="images/street6.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 1 / 5; aspect-ratio: 2/3;"><img src="images/street7.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 5 / 9; aspect-ratio: 2/3;"><img src="images/street8.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 9 / 13; aspect-ratio: 2/3;"><img src="images/street9.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 1 / 4; aspect-ratio: 2/3;"><img src="images/street10.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 4 / 8; aspect-ratio: 2/3;"><img src="images/street11.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 8 / 13; aspect-ratio: 2/3;"><img src="images/street12.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 1 / 5; aspect-ratio: 2/3;"><img src="images/street13.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 5 / 9; aspect-ratio: 2/3;"><img src="images/street14.jpg" alt="Street Photography"></div>
+      <div class="gallery-item" style="grid-column: 9 / 13; aspect-ratio: 2/3;"><img src="images/street15.jpg" alt="Street Photography"></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
 
 <!-- CONTACT -->
 <section id="contact" style="padding: 5rem 3rem; max-width: 700px; margin: 0 auto;">
