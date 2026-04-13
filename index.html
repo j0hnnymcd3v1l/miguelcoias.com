@@ -662,6 +662,47 @@
     transform: translateY(0);
   }
 
+  /* ── LIGHTBOX ── */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,5,4,0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    animation: lbFadeIn 0.25s ease;
+  }
+  @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border: 1px solid rgba(184,150,62,0.2);
+    cursor: default;
+    box-shadow: 0 0 80px rgba(0,0,0,0.8);
+    animation: lbZoomIn 0.3s ease;
+  }
+  @keyframes lbZoomIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .lightbox-close {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.8rem;
+    color: var(--off-white);
+    font-size: 2.2rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s, color 0.2s;
+    line-height: 1;
+    font-weight: 300;
+    z-index: 10001;
+    padding: 0.5rem;
+  }
+  .lightbox-close:hover { opacity: 1; color: var(--gold); }
+  .gallery-item { cursor: zoom-in; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
@@ -675,8 +716,12 @@
     .resume-grid { grid-template-columns: 1fr; }
     .gallery-grid {
       grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
     }
-    .gallery-item:nth-child(n) { grid-column: auto; grid-row: auto;  }
+    .gallery-item,
+    .gallery-item:nth-child(n),
+    .gallery-item[style] { grid-column: span 1 !important; grid-row: auto !important; }
+    .gallery-section { padding: 3rem 1rem; }
     .footer { flex-direction: column; gap: 1.5rem; text-align: center; }
   }
 </style>
@@ -1000,7 +1045,41 @@
   }
 </script>
 
-<!-- FOOTER -->
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <span class="lightbox-close" id="lightbox-close" title="Close (Esc)">&#215;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  (function () {
+    const overlay = document.getElementById('lightbox');
+    const img     = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    function open(src, alt) {
+      img.src = src;
+      img.alt = alt || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      img.src = '';
+    }
+
+    document.querySelectorAll('.gallery-item img').forEach(function (el) {
+      el.addEventListener('click', function () { open(el.src, el.alt); });
+    });
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
+</script>
+
+
 <footer class="footer">
   <div class="footer-name">Miguel Coias</div>
   <ul class="social-links">
