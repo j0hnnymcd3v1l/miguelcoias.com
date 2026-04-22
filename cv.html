@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miguel Cóias — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-ink: #1a1a1a;
+      --color-body: #2d2d2d;
+      --color-muted: #6b6b6b;
+      --color-rule: #c8c0b8;
+      --color-accent: #8b4513;
+      --color-bg: #faf8f5;
+      --color-bg-alt: #f0ece6;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, Helvetica Neue, sans-serif;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-body);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--color-rule);
+    }
+
+    header h1 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 3.2rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-ink);
+      margin-bottom: 0.4rem;
+    }
+
+    header .tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--color-muted);
+      margin-bottom: 1.4rem;
+    }
+
+    header .contact {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: var(--color-muted);
+    }
+
+    header .contact a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    header .contact a:hover {
+      border-bottom-color: var(--color-accent);
+    }
+
+    header .contact .sep {
+      margin: 0 0.6em;
+      color: var(--color-rule);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 2.6rem 0 0;
+    }
+
+    section > h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1.6rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-rule);
+    }
+
+    /* ── ABOUT ── */
+    .about p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--color-body);
+      max-width: 680px;
+    }
+
+    /* ── EXPERIENCE ENTRIES ── */
+    .entry {
+      margin-bottom: 2.2rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .entry-header h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--color-ink);
+    }
+
+    .entry-header .dates {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      color: var(--color-muted);
+      white-space: nowrap;
+    }
+
+    .entry .org {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--color-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .entry p,
+    .entry ul {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--color-body);
+    }
+
+    .entry ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .entry ul li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .entry ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--color-rule);
+      font-weight: 500;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-entry {
+      margin-bottom: 1.2rem;
+    }
+
+    .edu-entry .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .edu-entry .edu-header h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--color-ink);
+    }
+
+    .edu-entry .edu-header .dates {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .edu-entry .institution {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+    .edu-entry .note {
+      font-size: 0.83rem;
+      color: var(--color-body);
+      margin-top: 0.15rem;
+    }
+
+    /* ── LANGUAGES ── */
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.6rem 2rem;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px dotted var(--color-rule);
+    }
+
+    .lang-item .lang-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--color-ink);
+    }
+
+    .lang-item .lang-level {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── SKILLS / TOOLS ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem 3rem;
+    }
+
+    .tool-category h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .tool-category p {
+      font-size: 0.85rem;
+      color: var(--color-body);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--color-rule);
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      body { background: #fff; font-size: 11pt; }
+      header { padding: 1.5rem 0 1rem; }
+      header h1 { font-size: 2rem; }
+      main { padding: 0; max-width: 100%; }
+      section { padding-top: 1.2rem; }
+      .entry { margin-bottom: 1rem; }
+      footer { display: none; }
+      a { color: var(--color-ink); text-decoration: none; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.2rem; letter-spacing: 0.08em; }
+      header .tagline { font-size: 1rem; }
+      .entry-header { flex-direction: column; gap: 0; }
+      .entry-header .dates { order: -1; margin-bottom: 0.1rem; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .edu-entry .edu-header { flex-direction: column; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Miguel Cóias</h1>
+    <div class="tagline">Operations · Creative Arts · Photography · Technology</div>
+    <div class="contact">
+      New York, NY
+      <span class="sep">·</span>
+      <a href="mailto:rmcoias75@gmail.com">rmcoias75@gmail.com</a>
+      <span class="sep">·</span>
+      <a href="https://miguelcoias.com">miguelcoias.com</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <h2>About</h2>
+      <p>
+        Multidisciplinary professional working across operations, creative production, photography, writing, and technology. Over thirty years of professional experience spanning performing arts in five language markets, technical support and process design at Apple, venue operations management, systems administration, and freelance cybersecurity work. Deeply interested in mission-driven work with genuine human impact — whether that takes the form of humanitarian communications, visual storytelling, open knowledge, or building the systems that make good work possible.
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <h2>Experience</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Technical Specialist</h3>
+          <span class="dates">2021 – Present</span>
+        </div>
+        <div class="org">Apple Soho · New York, NY</div>
+        <ul>
+          <li>Primary coordination and resolution resource for a high-volume technical support environment — ensuring customers move through diagnostic and service pathways smoothly with clear handoff documentation.</li>
+          <li>Own data accuracy and record integrity across intake, case escalation, and resolution — documenting complex multi-issue cases across English, Spanish, and Portuguese to ensure continuity across shifts and personnel changes.</li>
+          <li>Design and deliver calibration training for colleagues on diagnostic protocols and quality standards, ensuring consistent execution across the team.</li>
+          <li>Identify operational bottlenecks and propose practical process improvements across Genius, Creative, and Operations workflows.</li>
+          <li>Manage participant communications across multiple channels, adapting tone, register, and language to audience — from standard cases to escalated enterprise issues.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Operations Manager</h3>
+          <span class="dates">2010 – Present</span>
+        </div>
+        <div class="org">Iona Bar · Brooklyn, NY</div>
+        <ul>
+          <li>Manage end-to-end venue operations in a lean, autonomous team: staffing, compliance, vendor coordination, inventory management, and scheduling — building systems that work reliably without supervision.</li>
+          <li>Design and implement operational workflows and staff training protocols; maintain documentation so institutional knowledge is preserved across personnel changes.</li>
+          <li>Coordinate multilingual participant and vendor communications; manage event outreach and audience engagement campaigns across email and social channels.</li>
+          <li>Primary communicator between staff, ownership, and external partners — proactively flagging blockers and adapting plans to ensure reliable outcomes.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Media Systems Administrator</h3>
+          <span class="dates">2020 – Present</span>
+        </div>
+        <div class="org">Independent · New York, NY</div>
+        <ul>
+          <li>Independently designed and maintain a personal media server infrastructure on a Mac mini M2: Jellyfin, Plex, Radarr, Sonarr, Prowlarr, qBittorrent, AdGuard, StreamMaster — coordinated via Docker Compose with NFS-mounted Synology NAS storage.</li>
+          <li>Maintain meticulous operational documentation, debugging logs, and process records — enabling fast recovery from failures and preserving continuity across system updates.</li>
+          <li>Managed large-scale metadata cleanup project across 2,600+ films, 56 TV series, and 11,000+ books — defining naming conventions, writing automation scripts, and systematically validating data integrity.</li>
+          <li>Debugged complex infrastructure failures across VPN routing, database corruption, DNS filtering, and metadata conflicts without external support.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Actor · Writer · Director</h3>
+          <span class="dates">1996 – Present</span>
+        </div>
+        <div class="org">Professional — Film, Theater & Television · NYC / International</div>
+        <ul>
+          <li>30-year professional creative career spanning film, television, theatre, and voice-over across two continents and five language markets. Represented by Maude Kaplan Management. IMDb credits.</li>
+          <li>Coordinated complex productions with defined collaborators, timelines, and quality standards — translating creative vision into operational execution across multilingual teams and international contexts.</li>
+          <li>Deep knowledge of world cinema across genres, eras, and national traditions — informing editorial judgment and the ability to assess quality across creative domains.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Production Assistant</h3>
+          <span class="dates">1997 – 1998</span>
+        </div>
+        <div class="org">Endemol Portugal · Lisbon, Portugal</div>
+        <ul>
+          <li>Contributed to large-scale television production for one of Europe's leading entertainment companies — gaining formative experience in production logistics and high-pressure creative environments.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Office Manager</h3>
+          <span class="dates">1993 – 1997</span>
+        </div>
+        <div class="org">Seamaster Shipping Agency · Lisbon, Portugal</div>
+        <ul>
+          <li>Managed administrative operations for an international shipping agency in a compliance-critical, high-volume environment — overseeing documentation, government filings, bookkeeping, and records infrastructure.</li>
+          <li>Promoted from Clerk to Office Manager within two years, reflecting consistent reliability and process ownership.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2>Education & Training</h2>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <h3>BA — Interdisciplinary Studies: Media & Writing</h3>
+          <span class="dates">2023</span>
+        </div>
+        <div class="institution">City University of New York (CUNY)</div>
+        <div class="note">Summa Cum Laude · GPA 3.87</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <h3>Digital Filmmaking Program (201 hours)</h3>
+          <span class="dates">2008</span>
+        </div>
+        <div class="institution">Digital Film Academy · New York</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <h3>Professional Training Program — Film & Television (2 years)</h3>
+          <span class="dates">2002</span>
+        </div>
+        <div class="institution">School for Film and Television (now New York Conservatory for Dramatic Arts) · New York</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <h3>American Academy of Dramatic Arts</h3>
+          <span class="dates">2001</span>
+        </div>
+        <div class="institution">AADA East · New York</div>
+        <div class="note">Attended; did not complete</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <h3>Shakespeare Summer School</h3>
+          <span class="dates">1998</span>
+        </div>
+        <div class="institution">Royal Academy of Dramatic Art (RADA) · London</div>
+        <div class="note">Voice, movement, stage combat, speech, period dance, sonnets</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <h3>Business Administration (3 years, no degree)</h3>
+          <span class="dates">1990 – 1993</span>
+        </div>
+        <div class="institution">Universidade Lusíada · Lisbon, Portugal</div>
+      </div>
+
+    </section>
+
+    <!-- LANGUAGES -->
+    <section>
+      <h2>Languages</h2>
+      <div class="languages-grid">
+        <div class="lang-item">
+          <span class="lang-name">Portuguese</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Bilingual</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Spanish</span>
+          <span class="lang-level">Professional</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">French</span>
+          <span class="lang-level">Conversational</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Italian</span>
+          <span class="lang-level">Conversational</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS & SKILLS -->
+    <section>
+      <h2>Tools & Skills</h2>
+      <div class="tools-grid">
+        <div class="tool-category">
+          <h4>Photography</h4>
+          <p>Sony A7III, Sony A7CII. Documentary, editorial, and environmental portraiture.</p>
+        </div>
+        <div class="tool-category">
+          <h4>Operations</h4>
+          <p>Process documentation, workflow design, CRM systems, stakeholder communications, staff training and calibration.</p>
+        </div>
+        <div class="tool-category">
+          <h4>Systems & Infrastructure</h4>
+          <p>Docker, Linux, NAS administration, VPN configuration, DNS filtering, metadata management, scripting and automation.</p>
+        </div>
+        <div class="tool-category">
+          <h4>Writing & Communications</h4>
+          <p>Long-form writing, editorial content, multilingual communications, email campaign operations, social media management.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Miguel Cóias · New York, NY · <a href="https://miguelcoias.com" style="color: var(--color-accent); text-decoration: none;">miguelcoias.com</a>
+  </footer>
+
+</body>
+</html>
