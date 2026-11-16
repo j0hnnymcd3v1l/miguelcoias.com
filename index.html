@@ -81,6 +81,8 @@
 
   .nav-links a:hover { opacity: 1; color: var(--gold-light); }
 
+  .nav-toggle { display: none; }
+
   /* ── HERO ── */
   .hero {
     height: 100vh;
@@ -704,7 +706,42 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 7px;
+      width: 44px;
+      height: 44px;
+      padding: 0 10px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      position: relative;
+      z-index: 102;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 1px;
+      background: var(--gold);
+      transition: transform 0.3s;
+    }
+    nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+    nav.nav-open .nav-toggle span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+    .nav-links {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 101;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: rgba(10,10,8,0.97);
+    }
+    nav.nav-open .nav-links { display: flex; }
+    .nav-links a { font-size: 0.85rem; opacity: 0.9; }
+    .nav-logo { position: relative; z-index: 102; }
     .hero { padding: 0 1.5rem 4rem; }
     /* mobile: full-width photo across the top, fading down into the text (no narrow side edges to show as streaks) */
     .hero-image-container {
@@ -741,7 +778,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Miguel Coias</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links-list">
     <li><a href="#bio">About</a></li>
     <li><a href="#reel">Reel</a></li>
     <li><a href="#resume">Resume</a></li>
@@ -750,7 +787,24 @@
     <li><a href="#street">Photography</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links-list"><span></span><span></span></button>
 </nav>
+<script>
+(function () {
+  var nav = document.querySelector('nav');
+  var btn = nav.querySelector('.nav-toggle');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      nav.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -924,6 +978,7 @@
         </div>
       </div>
     </div>
+    <p style="margin-top: 3rem; text-align: center;"><a href="/cv.html" class="btn-ghost">View Full CV →</a></p>
   </div>
 </section>
 
